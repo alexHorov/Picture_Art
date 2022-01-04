@@ -2,7 +2,8 @@
 
 const forms = () => {
     const form = document.querySelectorAll('form'),
-        inputs = document.querySelectorAll('input');
+        inputs = document.querySelectorAll('input'),
+        upload = document.querySelectorAll('[name="upload"]')
 
     // checkNumInputs('input[name="user_phone"]')
 
@@ -32,10 +33,21 @@ const forms = () => {
     const clearInputs = () => {
         inputs.forEach(item => {
             item.value = '';
-        })
+        });
+        upload.forEach(item => {
+            item.previousElementSibling.textContent = "Файл не выбран";
+        });
     };
 
-
+    upload.forEach(item => {
+        item.addEventListener('input', () => {
+            let dots;
+            const arr = item.files[0].name.split('.');
+            arr[0].lenght > 6 ? dots = '...' : dots = ".";
+            const name = arr[0].substring(0, 6) + dots + arr[1];
+            item.previousElementSibling.textContent = name;
+        })
+    });
     form.forEach(item => {
         item.addEventListener('submit', (e) => {
             e.preventDefault()
@@ -60,7 +72,7 @@ const forms = () => {
             const formData = new FormData(item);
 
             let api;
-            item.closest('.popup-design') ? api = path.designer : api = path.question;
+            item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;
 
             console.log(api);
 
@@ -78,6 +90,9 @@ const forms = () => {
                     clearInputs();
                     setTimeout(() => {
                         statusMessage.remove()
+                        item.style.display = 'block';
+                        item.classList.remove('fadeOutUp');
+                        item.classList.add('fadeInUp');
                     }, 5000);
                 })
         })
