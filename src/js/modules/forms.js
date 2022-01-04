@@ -68,9 +68,9 @@ const forms = () => {
 
             postData(api, formData)
                 .then(res => {
-                    console.log(res)
-                    statusImg.setAttribute('src', message.ok)
-                    textMessage.textContent = message.succes
+                    console.log(res);
+                    statusImg.setAttribute('src', message.ok);
+                    textMessage.textContent = message.succes;
                 })
                 .catch(() => {
                     statusImg.setAttribute('src', message.fail)

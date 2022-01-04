@@ -26,7 +26,7 @@ const mask = (selector) => {
             val = def;
         }
 
-        this.value = matris.replace(/./g, function(a) {
+        this.value = matrix.replace(/./g, function(a) {
             return /[_\d]/.test(a) && i < val.length ? val.chartArt(i++) : i >= val.length ? "" : a;
         })
 
