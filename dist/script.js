@@ -1848,7 +1848,8 @@ window.addEventListener('DOMContentLoaded', () => {
   Object(_modules_showMoreStyles__WEBPACK_IMPORTED_MODULE_5__["default"])('.button-styles', '#styles .row');
   Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])('#size', '#material', '#options', '.promocode', '.calc-price');
   Object(_modules_filter__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_8__["default"])('.sizes-block'); // accordion();
+  Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_8__["default"])('.sizes-block');
+  Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_9__["default"])('.accordion-heading');
 });
 
 /***/ }),
@@ -1862,22 +1863,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const accordion = (triggerSelector, itemsSelector) => {
-  const btns = document.querySelectorAll(triggerSelector),
-        blocks = document.querySelectorAll(itemsSelector);
-  block.forEach(block => {
-    block.classList.add('animated', 'fadeInOut');
-  });
+const accordion = triggerSelector => {
+  const btns = document.querySelectorAll(triggerSelector);
   btns.forEach(btn => {
     btn.addEventListener('click', function () {
-      if (!this.classList.contains('active')) {
-        btns.forEach(btn => {
-          btn.classList.remove('active', 'active-style');
-        });
-        this.classList.add('active', 'active-style');
+      this.classList.toggle('active-style');
+      this.nextElementSibling.classList.toggle('active-content');
+
+      if (this.classList.contains('active-style')) {
+        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + 'px';
+      } else {
+        this.nextElementSibling.style.maxHeight = '0px';
       }
     });
-  });
+  }); //     blocks = document.querySelectorAll(itemsSelector);
+  // blocks.forEach(block => {
+  //     block.classList.add('animated', 'fadeInDown')
+  // });
+  // btns.forEach(btn => {
+  //     btn.addEventListener('click', function() {
+  //         if (!this.classList.contains('active')) {
+  //             btns.forEach(btn => {
+  //                 btn.classList.remove('active', 'active-style');
+  //             });
+  //             this.classList.add('active', 'active-style');
+  //         }
+  //     });
+  // });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (accordion);
@@ -2454,7 +2466,7 @@ const sliders = (slides, dir, prev, next) => {
       paused = setInterval(function () {
         plusSlides(1);
         items[slideIndex - 1].classList.add('slideInDown');
-      }, 1000);
+      }, 3000);
     } else {
       paused = setInterval(function () {
         plusSlides(1);

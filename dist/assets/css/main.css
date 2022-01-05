@@ -258,7 +258,8 @@ h4 {
     /* example */
     height: 4em;
     /* example */
-    line-height: 2em/* the same as height */
+    line-height: 2em
+    /* the same as height */
     ;
 }
 
@@ -648,7 +649,8 @@ h4 {
     /* example */
     height: 4em;
     /* example */
-    line-height: 2em/* the same as height */
+    line-height: 2em
+    /* the same as height */
     ;
 }
 
@@ -660,7 +662,8 @@ h4 {
 }
 
 .calc .file_upload>div {
-    padding-left: 1em/* example */
+    padding-left: 1em
+    /* example */
     ;
 }
 
@@ -1067,10 +1070,33 @@ h4 {
     border-bottom: 2px dotted #333;
 }
 
+.often-questions p.active-style span {
+    color: #e950d7;
+    font-weight: 900;
+    text-decoration: none;
+    border: 0;
+}
+
+.often-questions .accordion-heading.active+.accordion-block {
+    display: block;
+}
+
 .often-questions .accordion-block {
-    margin-top: 1rem;
     background-color: #f7e7e6;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+    /* display: none; */
+    /* margin-top: 1rem; */
+    /* padding: 3rem 4rem; */
+}
+
+.often-questions .accordion-block.active-content {
+    overflow: visible;
+    opacity: 1;
     padding: 3rem 4rem;
+    margin-top: 1rem;
 }
 
 .often-questions .accordion-block:before {
@@ -1354,7 +1380,8 @@ h4 {
     /* example */
     height: 4em;
     /* example */
-    line-height: 2em/* the same as height */
+    line-height: 2em
+    /* the same as height */
     ;
 }
 
